@@ -21,14 +21,14 @@ const CartItem = () => {
       </div>
 
       {/* Generate the product */}
-      <div className="flex flex-col gap-y-2 text-white">
+      <div className="flex flex-col gap-y-2 ">
         {productData?.map((item: Products) => (
           <div
             key={item._id}
-            className="w-full bg-black p-4 flex flex-col md:flex-row items-center justify-between gap-4"
+            className="w-full bg-gray-300 p-4 flex flex-col md:flex-row items-center justify-between gap-4"
           >
             <div className="flex items-center gap-x-3 md:w-1/3">
-              <span onClick={()=> dispatch(deleteProduct(item._id))} className="text-lg text-white hover:text-red-600 duration-200 cursor-pointer">
+              <span onClick={()=> dispatch(deleteProduct(item._id))} className="text-lg  hover:text-red-600 duration-200 cursor-pointer">
                 <AiOutlineClose />
               </span>
               <Image
@@ -41,7 +41,7 @@ const CartItem = () => {
               />
             </div>
             {/* Quantity */}
-            <div className="flex items-center justify-start gap-x-3 border-[1px] border-slate-300 py-2 px-4 w-full md:w-auto">
+            <div className="flex items-center justify-start gap-x-3 border-[1px] border-black py-2 px-4 w-full md:w-auto">
               <p>Cantidad</p>
               <div className="flex items-center text-lg w-20 justify-between">
                 <span

@@ -12,11 +12,14 @@ import { Products, StateProps } from "../../type";
 import FormattedPrice from "./FormattedPrice";
 import Link from "next/link";
 import { addUser, deleteUser } from "@/redux/shoppingSlice";
+import { BsBookmarks } from "react-icons/bs";
 
 const Header = () => {
   const dispatch = useDispatch();
   const { data: session } = useSession();
-  const { productData, orderData } = useSelector((state: StateProps) => state.shopping);
+  const { productData, orderData } = useSelector(
+    (state: StateProps) => state.shopping
+  );
 
   const [totalAmt, setTotalAmt] = useState(0);
 
@@ -42,7 +45,7 @@ const Header = () => {
     });
     setTotalAmt(amt);
   }, [productData]);
-  
+
   return (
     <div className="bg-bodyColor h-20 top-0 sticky z-50">
       <Container className="h-full flex items-center md:gap-x-5 justify-between md:justify-start max-w-screen-xl mx-auto px-4 xl:px-0 py-10">
@@ -84,6 +87,16 @@ const Header = () => {
             height={50}
             className="rounded-full object-cover"
           />
+        )}
+        {/* Order button */}
+        {orderData?.order?.length > 0 && session && (
+          <Link
+            href={"/order"}
+            className="headerDiv px-2 gap-x-1 cursor-pointer"
+          >
+            <BsBookmarks className="text-2xl" />
+            <p className="text-sm font-semibold">Pedidos</p>
+          </Link>
         )}
         {/* Logout button*/}
         {session && (
