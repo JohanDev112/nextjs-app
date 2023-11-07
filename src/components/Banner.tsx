@@ -38,7 +38,7 @@ const Banner = () => {
     prevArrow: <NextArrow />,
   };
   return (
-    <div className="relative">
+    <div className="relative mb-10">
       <Slider {...settings}>
         {/* Banner one */}
         <div className="w-full h-full relative">
@@ -70,7 +70,7 @@ const Banner = () => {
           <BannerText title="¡Seguro y rápido!" />
         </div>
       </Slider>
-      <div className="absolute w-full h-44 bg-gradient-to-t from-gray-100 to-transparent bottom-0 left-0 z-10"></div>
+      
     </div>
   );
 };

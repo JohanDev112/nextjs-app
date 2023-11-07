@@ -1,17 +1,26 @@
 export interface Products {
   _id: number;
   title: string;
-  description: string;
+  isNew: boolean;
   oldPrice: number;
   price: number;
-  brand: string;
-  image: string;
-  isNew: boolean;
+  description: string;
   category: string;
+  image: string;
   rating: number;
   quantity: number;
 }
 
-export interface ItemProps{
+export interface ItemProps {
   item: Products;
+}
+
+export interface StateProps {
+  shopping: {
+    productData: [];
+    userInfo: {};
+    orderData: {
+      order: Products[];
+    };
+  };
 }

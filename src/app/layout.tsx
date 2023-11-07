@@ -6,8 +6,10 @@ import "slick-carousel/slick/slick.css";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "MarketLane Ventures",
-  description: "The best choice for your home!",
+  title: {
+    template: 'MarketLane Ventures',
+    default: 'MarketLane Ventures - Tu mejor opción en línea!'
+  }
 };
 
 export default function RootLayout({
@@ -17,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-bodyFont w-full bg-main-bg text-darkText">
+      <body className="font-bodyFont w-full text-darkText">
         <Layout>
           <Header />
           {children}
