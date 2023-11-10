@@ -43,7 +43,7 @@ const Header = () => {
       amt += item.price * item.quantity;
       return;
     });
-    setTotalAmt(amt);
+    setTotalAmt(amt++);
   }, [productData]);
 
   return (
