@@ -1,7 +1,7 @@
 import type { NextAuthOptions } from "next-auth";
 // import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import FacebookProvider from "next-auth/providers/facebook";
+// import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const options: NextAuthOptions = {
@@ -57,15 +57,6 @@ export const options: NextAuthOptions = {
   },
 
   session: {
-    jwt: true,
-    maxAge: 30 * 24 * 60 * 60,
-    updateAge: 24 * 60 * 60,
-    async getSession (session: any, token: any){
-      const isTokenExpired = Date.now() > token.exp * 1000;
-      if (isTokenExpired) {
-        return Promise.resolve(null);
-      }
-      return Promise.resolve(session);
-    }
+    strategy: "jwt",
   },
 };
