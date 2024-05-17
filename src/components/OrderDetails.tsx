@@ -73,12 +73,8 @@ const OrderDetails = () => {
               <FormattedPrice amount={totalAmount} />
             </span>
           </p>
-          <button
-            onClick={() => dispatch(resetOrder())}
-            className="mt-5 border-[1px] border-gray-500 py-1 px-4 font-medium rounded-md hover:bg-black hover:text-white duration-300"
-          >
-            Restablecer orden
-          </button>
+
+          
         </div>
       ) : (
         <div className="py-10 bg-gray-200 text-black text-2xl text-center">

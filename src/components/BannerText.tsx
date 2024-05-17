@@ -31,8 +31,8 @@ const BannerText = ({ title }: Props) => {
           transition={{ duration: 0.7 }}
           className="flex gap-x-4 mt-2"
         >
-          <button value={'Ve más'} className="text-black hover:text-white py-3 px-6 rounded-full bg-white hover:bg-black duration-200 text-sm uppercase font-semibold">Ve más</button>
-          <button className="text-black hover:text-white py-3 px-6 rounded-full bg-white hover:bg-black duration-200 text-sm uppercase font-semibold">Compra ahora</button>
+          <button value={'Ve más'} className="text-black hover:text-white py-3 px-6 rounded-full bg-white border-slate-500 border-[1.7px] hover:bg-black duration-200 text-sm uppercase font-semibold">Ve más</button>
+          <button className="text-black hover:text-white py-3 px-6 rounded-full border-slate-500 bg-white hover:bg-black border-[1.7px] duration-200 text-sm uppercase font-semibold">Compra ahora</button>
         </motion.div>
       </Container>
     </div>

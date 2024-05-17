@@ -81,49 +81,58 @@ const ProductsData = ({ item }: ItemProps) => {
     //    />
     //  </div>
 
-
     // ==============================
-     <div className="w-full rounded-lg overflow-hidden">
-       <div>
-         <Link href={{ pathname: "/product", query: { _id: item?._id } }}>
-           <div className="w-full h-96 group overflow-hidden relative">
-             <Image
-               src={item?.image}
-               alt="imagen del producto"
-               width={500}
-               height={500}
-               className="object-cover w-full h-full hover:scale-110 duration-200"
-             />
-           </div>
-         </Link>
-         <div className="bg-black text-white w-full h-full flex flex-col gap-y-2 px-6 py-2">
-           <p className="font-bold">{item?.title}</p>
-           <div className="flex">{startArray}</div>
-           <div>
-             <div className="font-semibold">
-               <FormattedPrice amount={item?.price} />
-               <span className="flex justify-end">
-                 <button
-                   onClick={() => {
-                     dispatch(addToCart(item)) &&
-                       toast.success(
-                         `${item?.title.substring(
-                           0,
-                           15
-                         )} se añadió correctamente. 🤘🏻`
-                       );
-                   }}
-                   className="px-6 py-2 bg-white text-black rounded-sm m-3"
-                 >
-                   Añadir al carrito
-                 </button>
-               </span>
-             </div>
-           </div>
-         </div>
-       </div>
-       <Toaster />
-     </div>
+    <div className="w-full rounded-xl overflow-hidden">
+      <div>
+        <Link href={{ pathname: "/product", query: { _id: item?._id } }}>
+          <div className="w-full h-96 group overflow-hidden relative">
+            <Image
+              src={item?.image}
+              alt="imagen del producto"
+              width={500}
+              height={500}
+              className="object-cover w-full h-full hover:scale-110 duration-200"
+            />
+          </div>
+        </Link>
+        <div className="bg-black text-white w-full h-full flex flex-col gap-y-2 px-6 py-2">
+          <p className="font-bold">{item?.title}</p>
+          <div className="flex">{startArray}</div>
+          <div>
+            <div className="font-semibold">
+              {" "}
+              <div className="flex gap-x-2 items-center">
+                <div className="text-slate-500 line-through text-xs">
+                  <p>
+                    <FormattedPrice amount={item?.oldPrice} />
+                  </p>
+                </div>
+                <p>
+                  <FormattedPrice amount={item?.price} />
+                </p>
+              </div>
+              <span className="flex justify-end">
+                <button
+                  onClick={() => {
+                    dispatch(addToCart(item)) &&
+                      toast.success(
+                        `${item?.title.substring(
+                          0,
+                          15
+                        )} se añadió correctamente. 🤘🏻`
+                      );
+                  }}
+                  className="px-6 py-2 bg-white text-black rounded-sm m-3"
+                >
+                  Añadir al carrito
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Toaster />
+    </div>
   );
 };
 

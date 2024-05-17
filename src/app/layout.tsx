@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-bodyFont w-full text-darkText">
         <Layout>
-          <Header />
+          <Header/>
           {children}
           <Footer />
         </Layout>

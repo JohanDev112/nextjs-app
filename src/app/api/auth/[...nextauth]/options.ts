@@ -1,8 +1,8 @@
 import type { NextAuthOptions } from "next-auth";
 // import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import FacebookProvider from 'next-auth/providers/facebook'
-import CredentialsProvider from "next-auth/providers/credentials"
+import FacebookProvider from "next-auth/providers/facebook";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -14,10 +14,10 @@ export const options: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-     FacebookProvider({
-       clientId: process.env.FACEBOOK_CLIENT_ID!,
-       clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
-     }),
+    // FacebookProvider({
+    //   clientId: process.env.FACEBOOK_CLIENT_ID!,
+    //   clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
+    // }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -45,4 +45,27 @@ export const options: NextAuthOptions = {
       },
     }),
   ],
+
+  callbacks: {
+    async signIn({ user }) {
+      if (user.email && user.email.endsWith("@uaeh.edu.mx")) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+
+  session: {
+    jwt: true,
+    maxAge: 30 * 24 * 60 * 60,
+    updateAge: 24 * 60 * 60,
+    async getSession (session: any, token: any){
+      const isTokenExpired = Date.now() > token.exp * 1000;
+      if (isTokenExpired) {
+        return Promise.resolve(null);
+      }
+      return Promise.resolve(session);
+    }
+  },
 };
