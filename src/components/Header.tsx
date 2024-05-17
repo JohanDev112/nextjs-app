@@ -14,7 +14,7 @@ import Link from "next/link";
 import { addUser, deleteUser } from "@/redux/shoppingSlice";
 import { BsBookmarks } from "react-icons/bs";
 
-const Header = (item: Products) => {
+const Header = () => {
   const dispatch = useDispatch();
   const { data: session } = useSession();
   const { productData, orderData } = useSelector(
